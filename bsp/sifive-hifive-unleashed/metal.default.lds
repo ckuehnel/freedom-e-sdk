@@ -58,6 +58,12 @@ SECTIONS
 		*(.rdata)
 		*(.rodata .rodata.*)
 		*(.gnu.linkonce.r.*)
+		. = ALIGN(8);
+		*(.srodata.cst16)
+		*(.srodata.cst8)
+		*(.srodata.cst4)
+		*(.srodata.cst2)
+		*(.srodata .srodata.*)
 	} >flash AT>flash :flash
 
 
@@ -170,12 +176,6 @@ SECTIONS
 		PROVIDE( __global_pointer$ = . + 0x800 );
 		*(.sdata .sdata.* .sdata2.*)
 		*(.gnu.linkonce.s.*)
-		. = ALIGN(8);
-		*(.srodata.cst16)
-		*(.srodata.cst8)
-		*(.srodata.cst4)
-		*(.srodata.cst2)
-		*(.srodata .srodata.*)
 	} >ram AT>flash :ram_init
 
 
